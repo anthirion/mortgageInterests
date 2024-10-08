@@ -19,12 +19,23 @@ body {
     font-size: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 h1 {
     font-size: 36px;
     color: var(--ft-color);
+}
+
+.infoMessage {
+    background-color: #FFF3CD;
+    color: #856404;
+    font-size: 14px;
+    margin: 0 15px;
+}
+
+.infoMessage h2 {
+    font-size: 18px;
 }
 
 .parameters div {
