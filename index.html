@@ -8,30 +8,38 @@
 </head>
 <body>
     <h1>Compute easily your mortgage interests !</h1>
-    <form action="index.html" class="parameters-form">
+    <form action="index.html" class="parameters">
         <div>
             <label for="amountInput">Mortgage amount :</label>
             <input type="number" placeholder="200,000" id="amountInput">
-            <label>€</label>
+            <p>€</p>
+        </div>
+        <div>
             <label for="rateInput">Interest rate :</label>
             <input type="number" placeholder="3.1" id="rateInput">
-            <label>%</label>
+            <p>%</p>
+        </div>
+        <div>
             <label for="durationInput">Mortgage duration :</label>
             <input type="number" placeholder="20" id="durationInput">
-            <label>years</label>
+            <p>years</p>
         </div>
-        <input type="submit" value="Compute">
+        <button type="button">Compute</button>
     </form>
 
-    <div class="display-result">
-        <p class="text-result">Total interests :</p>
-        <p class="compute-result">10,300 €</p>
+    <div class="displayResults">
+        <p class="textResult">Total interests :</p>
+        <p class="computeResult">10,300 €</p>
     </div>
 
-    <div class="code-link">
+    <div class="sourceCode">
         <p>The code is available on :</p>
-        <img src="img/GitHubLogo.png">
-        <p>GitHub</p>
+        <a href="">
+            <div class="codeLink">
+                <img src="img/GitHubLogo.png">
+                <p>GitHub</p>
+            </div>
+        </a>
     </div>
 
 

@@ -1,0 +1,100 @@
+:root {
+    --ft-color: #EA580C;
+    --bg-color: #FEC88F;
+    --default-margin: 20px;
+}
+
+* {
+    /* Inclure les padding et margin dans le calcul de la largeur et hauteur des éléments */
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    text-align: center;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+h1 {
+    font-size: 36px;
+    color: var(--ft-color);
+}
+
+.parameters div {
+    display: flex;
+    align-items: center;
+    margin: var(--default-margin);
+}
+
+.parameters label {
+    margin-right: var(--default-margin);
+    text-align: left;
+    width: 150px;
+}
+
+.parameters input {
+    width: 90px;
+}
+
+.parameters p {
+    display: inline;
+    margin-left: var(--default-margin);
+    margin-right: calc(2*var(--default-margin));
+}
+
+button {
+    display: block;
+    margin: calc(2*var(--default-margin)) auto 0 auto;
+    color: var(--ft-color);
+    font-size: 26px;
+    background-color: var(--bg-color);
+    font-weight: bold;
+    border: #FFF;
+    padding: 10px 35px;
+    border-radius: 15px;
+}
+
+.displayResults {
+    font-size: 32px;
+    color: var(--ft-color);
+}
+
+.displayResults p:first-child {
+    margin-bottom: var(--default-margin);
+}
+
+.sourceCode {
+    font-size: 20px;
+}
+
+.sourceCode p:first-child {
+    margin-bottom: var(--default-margin);
+}
+
+.codeLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.codeLink img {
+    margin: 0 25px;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+@media screen and (min-width: 600px) {
+    .parameters div {
+        display: inline-block;
+    }
+}
