@@ -59,6 +59,11 @@ button {
     border: #FFF;
     padding: 10px 35px;
     border-radius: 15px;
+    cursor: pointer; /* Change le curseur en une main */
+}
+
+button:hover {
+    opacity: 0.9;
 }
 
 .displayResults {
