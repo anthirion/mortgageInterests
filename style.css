@@ -50,16 +50,18 @@ h1 {
 }
 
 button {
-    display: block;
-    margin: calc(2*var(--default-margin)) auto 0 auto;
-    color: var(--ft-color);
+    margin: calc(2*var(--default-margin)) var(--default-margin);
     font-size: 26px;
-    background-color: var(--bg-color);
-    font-weight: bold;
     border: #FFF;
     padding: 10px 35px;
     border-radius: 15px;
     cursor: pointer; /* Change le curseur en une main */
+}
+
+.computeButton {
+    font-weight: bold;
+    background-color: var(--bg-color);
+    color: var(--ft-color);
 }
 
 button:hover {
