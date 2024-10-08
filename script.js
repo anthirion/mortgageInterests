@@ -1,20 +1,42 @@
 const form = document.querySelector("form");
 const computeResult = document.querySelector(".computeResult");
 
+/**
+ * Récupère une valeur écrite au format allemand (point comme séparateur
+ * des milliers et virgules comme séparateur décimal) et le formate de telle
+ * sorte que le JS puisse le traiter
+ * @param {string} inputValue
+ * @returns {Number}
+ */
+function formatNumber(inputValue) {
+	let formatedValue = inputValue
+		.replace(".", "") // Enlève les points
+		.replace(",", "."); // Remplace la virgule par un point
+
+	// Convertir en floattant
+	formatedValue = parseFloat(formatedValue);
+	return formatedValue;
+}
+
 document.querySelector(".computeButton").addEventListener("click", (event) => {
 	event.preventDefault();
 	event.stopPropagation();
 	const formData = new FormData(form);
-	const amount = formData.get("amount");
-	const rate = formData.get("rate");
-	const duration = formData.get("duration");
+	let amount = formData.get("amount").toString();
+	let rate = formData.get("rate").toString();
+	let duration = formData.get("duration").toString();
+	amount = formatNumber(amount);
+	rate = formatNumber(rate);
+	duration = formatNumber(duration);
 	if (amount != 0 && rate != 0 && duration != 0) {
 		let interests = amount * (rate / 100) * duration;
-		// Arrondir la valeur des intérêts à 2 chiffres après la virgule
-		const roundedInterests = interests.toFixed(2);
-		computeResult.innerText = roundedInterests;
+		const formattedInterests = interests.toLocaleString("de-DE", {
+			style: "currency",
+			currency: "EUR",
+		});
+		computeResult.innerText = formattedInterests;
 	} else {
-		computeResult.innerText = "0.00";
+		computeResult.innerText = "0,00 €";
 	}
 });
 
@@ -22,7 +44,7 @@ document.querySelector(".clearButton").addEventListener("click", (event) => {
 	event.preventDefault();
 	event.stopPropagation();
 	form.reset();
-	computeResult.innerText = "0.00";
+	computeResult.innerText = "0,00 €";
 });
 
 /*

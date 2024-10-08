@@ -11,3 +11,9 @@ Pour palier à ces deux problèmes, j'ai décidé de coder cette web app qui cal
 ## Conditions d'utilisation
 
 En contrepartie de la gratuité de l'app et de la mise à disposition de son code source, l'auteur ne garantit pas d'évolutions futures. Il s'efforcera de corriger les bugs et d'ajouter des fonctionnalités jugées pertinentes, sans contrainte ni de résultats ni de délais.
+
+## Points à retenir
+
+<ol>
+    <li>Les boucles for en JS manipule des copies</li>
+</ol>
