@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage interests</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" type="module"></script>
+</head>
+<body>
+    <h1>Compute easily your mortgage interests !</h1>
+    <form action="index.html" class="parameters-form">
+        <div>
+            <label for="amountInput">Mortgage amount :</label>
+            <input type="number" placeholder="200,000" id="amountInput">
+            <label>€</label>
+            <label for="rateInput">Interest rate :</label>
+            <input type="number" placeholder="3.1" id="rateInput">
+            <label>%</label>
+            <label for="durationInput">Mortgage duration :</label>
+            <input type="number" placeholder="20" id="durationInput">
+            <label>years</label>
+        </div>
+        <input type="submit" value="Compute">
+    </form>
+
+    <div class="display-result">
+        <p class="text-result">Total interests :</p>
+        <p class="compute-result">10,300 €</p>
+    </div>
+
+    <div class="code-link">
+        <p>The code is available on :</p>
+        <img src="img/GitHubLogo.png">
+        <p>GitHub</p>
+    </div>
+
+
+</body>
+</html>
