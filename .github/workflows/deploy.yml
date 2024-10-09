@@ -1,21 +1,36 @@
 # Copie le contenu de src/ dans une branche distincte gh-pages
 # et le déploie sur GitHub Pages
-name: Deploy website
+name: Deploy site on GitHub Pages
 
 on:
   push:
     branches:
-      - master
-  pull_request:
+      - master # Déclenche l'action lorsque du code est poussé sur master
 
 jobs:
   deploy:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
     steps:
+      # Étape 1 : Checkout le dépôt
       - uses: actions/checkout@v3
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./src # deploy src folder
+          fetch-depth: 0 # Récupère tout l'historique Git
+
+      # Étape 2 : Copier les fichiers du dossier src
+      - name: Copy files to deployment folder
+        run: |
+          mkdir output   # Crée un répertoire temporaire
+          cp -r src/* output/ # Copie les fichiers du dossier src vers le répertoire temporaire
+
+      # Étape 3 : Déployer sur gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Utilise le jeton GitHub pour l'authentification
+          publish_branch: gh-pages # Spécifie la branche de déploiement
+          publish_dir: ./src
