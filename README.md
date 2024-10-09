@@ -2,11 +2,11 @@
 
 ## Motivation du projet
 
-A chaque fois que j'entends parler d'un projet d'achat immobilier de tel montant, je m'interroge toujours sur le montant des intérêts. Il existe certainement de nombreux sites qui font ce calcul mais je ne connait pas la manière dont il traite les données que je rentre sur le site et je crains de me retrouver avec un nombre important de publicités me proposant un achat immobilier.
+A chaque fois que j'entends parler d'un projet d'achat immobilier de tel montant, je m'interroge toujours sur le montant des mensualités. Il existe certainement de nombreux sites qui font ce calcul mais je ne connait pas la manière dont il traite les données que je rentre sur le site et je crains que ces données soient utilisées pour du ciblage publicitaire.
 
 ## Présentation du projet
 
-Pour palier à ces deux problèmes, j'ai décidé de coder cette web app qui calcule le montant des intérêts d'un prêt immobilier à partir du montant du prêt (le capital) et du taux d'intérêts. Cette web app n'a pas besoin de serveur pour faire le calcul des intérêts : tous les calculs sont effectués directement dans le navigateur, sans aucun stockage des données entrées (même pas de stockage local). La confidentialité des données est donc maximale car aucune donnée n'est transmise à un système distant. La contrepartie est que si vous fermez l'onglet, vous perdez toutes les informations que vous avez précédemment entrées.
+Pour palier à ces deux problèmes, j'ai décidé de coder cette web app qui calcule le montant des mensualités d'un prêt immobilier à partir du montant du prêt (le capital) et du taux d'intérêt. Cette web app n'a pas besoin de serveur pour faire le calcul des mensualités : tous les calculs sont effectués directement en local sur le navigateur, sans aucun stockage des données entrées. La confidentialité des données est donc maximale puisqu'aucune donnée n'est transmise à un système distant. La contrepartie est que si vous fermez l'onglet, vous perdez toutes les informations que vous avez précédemment entrées.
 
 ## Présentation technique du projet
 
