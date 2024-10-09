@@ -26,8 +26,6 @@ document.querySelector(".computeButton").addEventListener("click", (event) => {
 	let rate = formData.get("rate").toString();
 	let duration = formData.get("duration").toString();
 	amount = formatNumber(amount);
-	rate = formatNumber(rate);
-	duration = formatNumber(duration);
 	if (amount != 0 && rate != 0 && duration != 0) {
 		let interests = amount * (rate / 100) * duration;
 		const formattedInterests = interests.toLocaleString("de-DE", {
