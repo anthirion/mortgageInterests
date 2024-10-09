@@ -48,7 +48,7 @@ document.querySelector(".clearButton").addEventListener("click", (event) => {
 });
 
 /*
-Pour avoir un nombre décimal, tester avec les valeurs suivantes :
+Pour avoir un résultat décimal, tester avec les valeurs suivantes :
 amount -> 1115
 rate -> 3.02
 duration -> 15
