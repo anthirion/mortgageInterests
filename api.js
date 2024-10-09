@@ -8,7 +8,7 @@
  * @returns {Number}
  */
 export function computeMonthlyPayment(amount, rate, duration) {
-	const tmp = rate / 12;
+	const tmp = rate / (12 * 100);
 	const numerator = amount * tmp;
 	const denominator = 1 - Math.pow(1 + tmp, -12 * duration);
 	return numerator / denominator;
