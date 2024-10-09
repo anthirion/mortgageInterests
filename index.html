@@ -20,20 +20,21 @@
     <form action="index.html" class="parameters">
         <div>
             <label for="amountInput">Mortgage amount :</label>
-            <input type="number" placeholder="20.0000" id="amountInput" name="amount">
+            <input type="number" placeholder="20.0000" id="amountInput" name="amount" min="0" required>
             <p>€</p>
         </div>
         <div>
             <label for="rateInput">Interest rate :</label>
-            <input type="number" placeholder="3,1" id="rateInput" name="rate">
+            <input type="number" placeholder="3.1" id="rateInput" name="rate" step="0.01" min="0" max="100" required>
             <p>%</p>
         </div>
         <div>
             <label for="durationInput">Mortgage duration :</label>
-            <input type="number" placeholder="20" id="durationInput" name="duration">
+            <input type="number" placeholder="20" id="durationInput" name="duration" min="1" required>
             <p>years</p>
         </div>
     </form>
+    
     
     <div class="controlButtons">
         <button type="button" class="computeButton">Compute</button>
