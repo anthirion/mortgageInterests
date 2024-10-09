@@ -1,5 +1,5 @@
 import { expect } from "chai"; // Import de l'assertion Chai
-import { computeMonthlyPayment } from "../../src/api.js"; // Import de la fonction à tester
+import { computeMonthlyPayment } from "../../src/utils.js"; // Import de la fonction à tester
 
 describe("computeMonthlyPayment", () => {
 	it("should calculate the monthly payment for a typical loan", () => {

@@ -1,5 +1,5 @@
-import { expect } from "chai"; // Import de l'assertion Chai
-import { formatNumber } from "../../src/api.js"; // Import de la fonction à tester
+import { expect } from "chai";
+import { formatNumber } from "../../src/utils.js";
 
 describe("formatNumber", () => {
 	// Tests pour les nombres positifs

@@ -1,4 +1,4 @@
-import { formatNumber, computeMonthlyPayment } from "./api.js";
+import { formatNumber, computeMonthlyPayment } from "./utils.js";
 
 const form = document.querySelector("form");
 const computeResult = document.querySelector(".computeResult");

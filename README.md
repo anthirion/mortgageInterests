@@ -1,5 +1,7 @@
 # Mortgage interests
 
+Ce projet est une web app qui permet de calculer facilement les mensualités d'un prêt immobilier à partir du montant, du taux et de la durée du prêt. L'app est disponible <a href="#"></a>
+
 ## Motivation du projet
 
 A chaque fois que j'entends parler d'un projet d'achat immobilier de tel montant, je m'interroge toujours sur le montant des mensualités. Il existe certainement de nombreux sites qui font ce calcul mais je ne connait pas la manière dont il traite les données que je rentre sur le site et je crains que ces données soient utilisées pour du ciblage publicitaire.
@@ -13,7 +15,7 @@ Pour palier à ces deux problèmes, j'ai décidé de coder cette web app qui cal
 En plus du code en HTML, CSS et JS, j'ai implémenté une chaine CI/CD avec les éléments suivants :
 
 <ul>
-    <li>Jest pour les tests</li>
+    <li>Mocha et Chai pour les tests</li>
     <li>Selenium pour les tests end-to-end</li>
     <li>Sonarqube pour l'analyse statique</li>
 </ul>
