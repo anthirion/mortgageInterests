@@ -29,10 +29,3 @@ document.querySelector(".clearButton").addEventListener("click", (event) => {
 	form.reset();
 	computeResult.innerText = "0,00 €";
 });
-
-/*
-Pour avoir un résultat décimal, tester avec les valeurs suivantes :
-amount -> 1115
-rate -> 3.02
-duration -> 15
-*/
