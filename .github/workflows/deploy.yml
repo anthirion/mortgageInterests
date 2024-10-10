@@ -27,7 +27,7 @@ jobs:
           mkdir output   # Crée un répertoire temporaire
           cp -r src/* output/ # Copie les fichiers du dossier src vers le répertoire temporaire
 
-      # Étape 3 : Déployer sur gh-pages
+      # Étape 3 : Déployer sur la branche gh-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

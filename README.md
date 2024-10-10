@@ -32,6 +32,7 @@ Remarques générales :
     <li>Les boucles for en JS manipule des copies</li>
     <li>Pour un effet de survol sur les boutons, une opacity fait très bien l'affaire</li>
     <li>Il est possible de valider les données d'un formulaire avec des attributs HTML directement, sans passer par un script JS</li>
+    <li>Lors d'un déploiement sur GitHub Pages, penser à vider le cache ou à passer en navigation privée pour voir les changements</li>
 </ol>
 
 Remarques en CSS :
