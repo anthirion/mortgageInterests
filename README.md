@@ -1,6 +1,6 @@
 # Mortgage interests
 
-Ce projet est une web app qui permet de calculer facilement les mensualités d'un prêt immobilier à partir du montant, du taux et de la durée du prêt. L'app est disponible <a href="https://anthirion.github.io/mortgage_interests/">ici</a>
+Ce projet est une web app qui permet de calculer facilement les mensualités d'un prêt immobilier à partir du montant, du taux et de la durée du prêt. L'app est disponible <a href="https://anthirion.github.io/mortgageInterests/">ici</a>
 
 ## Motivation du projet
 
