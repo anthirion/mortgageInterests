@@ -1,6 +1,4 @@
-# Copie le contenu de src/ dans une branche distincte gh-pages
-# et le déploie sur GitHub Pages
-name: Deploy site on GitHub Pages
+name: Unit tests, Static code analysis and deployment
 
 on:
   push:
@@ -8,8 +6,75 @@ on:
       - master # Déclenche l'action lorsque du code est poussé sur master
 
 jobs:
+  # Job 1 : Tests unitaires
+  unit-tests:
+    runs-on: ubuntu-22.04
+    steps:
+      # Étape 1 : Checkout le dépôt
+      - uses: actions/checkout@v3
+
+      # Étape 2 : Installer Node.js pour Mocha et Chai
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # Étape 3 : Installer les dépendances (Mocha, Chai)
+      - name: Install dependencies
+        run: |
+          npm install mocha chai
+
+      # Étape 4 : Exécuter les tests unitaires
+      - name: Run unit tests
+        run: |
+          npx mocha test/unit --reporter spec
+
+  # Job 2 : Tests end-to-end avec Selenium
+  e2e-tests:
+    runs-on: ubuntu-22.04
+    needs: unit-tests # Lance ce job seulement si les tests unitaires réussissent
+    steps:
+      # Étape 1 : Checkout le dépôt
+      - uses: actions/checkout@v3
+
+      # Étape 2 : Installer les dépendances Selenium
+      - name: Setup Selenium & Node.js
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y default-jdk
+          npm install selenium-webdriver
+
+      # Étape 3 : Exécuter les tests e2e
+      - name: Run e2e tests
+        run: |
+          npx selenium-standalone start &
+          sleep 5  # Attends un moment pour que Selenium se lance
+          npx mocha test/e2e --reporter spec
+
+  # Job 3 : Analyse statique SonarQube
+  sonar-analysis:
+    runs-on: ubuntu-22.04
+    needs: e2e-tests # Lance ce job seulement si les tests e2e réussissent
+    steps:
+      # Étape 1 : Checkout le dépôt
+      - uses: actions/checkout@v3
+
+      # Étape 2 : Configuration de SonarQube Scanner
+      - name: SonarQube Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Clé d'authentification pour SonarQube
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=MortgageInterests \
+            -Dsonar.sources=../src \
+            -Dsonar.host.url=http://localhost:9001 \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+  # Job 4 : Déploiement sur GitHub Pages
+  # Copie des fichiers du dossier src/ et les déploie sur gh-pages
   deploy:
     runs-on: ubuntu-22.04
+    needs: sonar-analysis # Lance ce job seulement si SonarQube réussit
     permissions:
       contents: write
     concurrency:
@@ -19,18 +84,18 @@ jobs:
       # Étape 1 : Checkout le dépôt
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Récupère tout l'historique Git
+          fetch-depth: 0
 
-      # Étape 2 : Copier les fichiers du dossier src
+      # Étape 2 : Copier les fichiers du dossier src vers le répertoire de déploiement
       - name: Copy files to deployment folder
         run: |
-          mkdir output   # Crée un répertoire temporaire
-          cp -r src/* output/ # Copie les fichiers du dossier src vers le répertoire temporaire
+          mkdir output
+          cp -r src/* output/
 
       # Étape 3 : Déployer sur la branche gh-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Utilise le jeton GitHub pour l'authentification
-          publish_branch: gh-pages # Spécifie la branche de déploiement
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./src
