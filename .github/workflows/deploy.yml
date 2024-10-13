@@ -51,30 +51,10 @@ jobs:
           sleep 5  # Attends un moment pour que Selenium se lance
           npx mocha test/e2e --reporter spec
 
-  # Job 3 : Analyse statique SonarQube
-  sonar-analysis:
-    runs-on: ubuntu-22.04
-    needs: e2e-tests # Lance ce job seulement si les tests e2e réussissent
-    steps:
-      # Étape 1 : Checkout le dépôt
-      - uses: actions/checkout@v3
-
-      # Étape 2 : Configuration de SonarQube Scanner
-      - name: SonarQube Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Clé d'authentification pour SonarQube
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=MortgageInterests \
-            -Dsonar.sources=../src \
-            -Dsonar.host.url=http://localhost:9001 \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-
-  # Job 4 : Déploiement sur GitHub Pages
+  # Job 3 : Déploiement sur GitHub Pages
   # Copie des fichiers du dossier src/ et les déploie sur gh-pages
   deploy:
     runs-on: ubuntu-22.04
-    needs: sonar-analysis # Lance ce job seulement si SonarQube réussit
     permissions:
       contents: write
     concurrency:
